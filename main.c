@@ -56,12 +56,10 @@ int	_debugmask;
 #endif
 
 /* #define DEBUG_DUMP */
-#if 0
 #ifdef DEBUG_DUMP
-#define DBG_PRINT(args...)   fprintf(args)
+#define DBG_PRINT(file, fmt, args)   fprintf(file, fmt, args)
 #else
-#define DBG_PRINT(args...)   /* empty */
-#endif
+#define DBG_PRINT(file, fmt, args)   /* empty */
 #endif
 
 #define DASH_INC_PRE    "#include \""
@@ -492,7 +490,7 @@ main(int argc, char *argv[])
 	 * now peruse through the list of files.
 	 */
 	for(fp=filelist; *fp; fp++) {
-		/* DBG_PRINT(stderr,"file: %s\n",*fp); */
+		DBG_PRINT(stderr,"file: %s\n",*fp);
 		filecontent = getfile(*fp);
 		setfile_cmdinc(filecontent, cmdinc_count, cmdinc_list);
 		ip = newinclude(*fp, (char *)NULL);
@@ -614,7 +612,7 @@ char *getnextline(struct filepointer *filep)
 		char *buf = filep->cmdinc_list[2 * filep->cmdinc_line + 1];
 		filep->cmdinc_line++;
 		sprintf(buf,"%s%s%s",DASH_INC_PRE,inc,DASH_INC_POST);
-		/* DBG_PRINT(stderr,"%s\n",buf); */
+		DBG_PRINT(stderr,"%s\n",buf);
 		return(buf);
 	}
 
@@ -719,7 +717,7 @@ done:
 	filep->f_line = lineno;
 #ifdef DEBUG_DUMP
 	if (bol)
-		/* DBG_PRINT(stderr,"%s\n",bol); */
+		DBG_PRINT(stderr,"%s\n",bol);
 #endif
 	return(bol);
 }
