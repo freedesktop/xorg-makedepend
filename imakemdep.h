@@ -618,9 +618,6 @@ char *cpp_argv[ARGUMENTS] = {
 # ifdef ppc
 	"-Dppc",
 # endif
-# ifdef ppc64
-	"-Dppc64",
-# endif
 # if defined(m68k)  || defined(M68k) || defined(m68040)
 	"-Dm68k",
 	"-DM68k",
@@ -680,10 +677,6 @@ char *cpp_argv[ARGUMENTS] = {
 	"-DSVR4",
 # endif
 # ifdef __powerpc__
-#  ifdef __powerpc64__
-	"-D__powerpc64__",
-#  endif
-# else
 	"-D__powerpc__",
 # endif
 # ifdef PowerMAX_OS
@@ -717,9 +710,6 @@ char *cpp_argv[ARGUMENTS] = {
         "-D__DARWIN__",
 # ifdef __ppc__
         "-D__ppc__",
-# endif
-# ifdef __ppc64__
-        "-D__ppc64__",
 # endif
 # ifdef __i386__
         "-D__i386__",
@@ -1263,10 +1253,6 @@ struct symtab	predefs[] = {
         {"__QNXNTO__", "1"},
 #endif
 # ifdef __powerpc__
-#  ifdef __powerpc64__
-	{"__powerpc64__", "1"},
-#  endif
-# else
 	{"__powerpc__", "1"},
 # endif
 # ifdef PowerMAX_OS
@@ -1345,9 +1331,6 @@ struct symtab	predefs[] = {
 # endif
 #if defined(__ppc__)
         {"__ppc__", "1"},
-#endif
-#if defined(__ppc64__)
-        {"__ppc64__", "1"},
 #endif
 #if defined(__BIG_ENDIAN__)
       {"__BIG_ENDIAN__", "1"},
