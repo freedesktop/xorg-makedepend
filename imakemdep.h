@@ -371,11 +371,11 @@ char *cpp_argv[ARGUMENTS] = {
 # ifdef __ia64__
 	"-D__ia64__",
 # endif
-# ifdef __AMD64__
-	"-D__AMD64__",
+# ifdef __amd64__
+	"-D__amd64__",
 # endif
 # ifdef __x86_64__
-	"-D__AMD64__",
+	"-D__amd64__",
 # endif
 # ifdef __s390__
 	"-D__s390__",
@@ -1014,8 +1014,17 @@ struct symtab	predefs[] = {
 #ifdef sparc
 	{"sparc", "1"},
 #endif
+#ifdef __sparc
+	{"__sparc", "1"},
+#endif
+#ifdef __sparcv9
+	{"__sparcv9", "1"},
+#endif
 #ifdef __sparc__
 	{"__sparc__", "1"},
+#endif
+#ifdef __sparcv9__
+	{"__sparcv9__", "1"},
 #endif
 #ifdef hpux
 	{"hpux", "1"},
@@ -1255,13 +1264,16 @@ struct symtab	predefs[] = {
 # ifdef __ia64__
 	{"__ia64__", "1"},
 # endif
-# if defined (AMD64) || defined (x86_64)
-	{"AMD64", "1"},
+# if defined (amd64) || defined (x86_64)
+	{"amd64", "1"},
 	{"x86_64", "1"},
 # endif
-# if defined (__AMD64__) || defined (__x86_64__)
-	{"__AMD64__", "1"},
+# if defined (__amd64__) || defined (__x86_64__)
+	{"__amd64__", "1"},
 	{"__x86_64__", "1"},
+# endif
+# ifdef __i386
+	{"__i386", "1"},
 # endif
 # ifdef __i386__
 	{"__i386__", "1"},
