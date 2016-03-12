@@ -82,9 +82,9 @@ extern int	_debugmask;
  *     3	show #include SYMBOL
  *     4-6	unused
  */
-#define debug(level,arg) { if (_debugmask & (1 << level)) warning arg; }
+#define debug(level,arg) do { if (_debugmask & (1 << level)) warning arg; } while(0)
 #else
-#define	debug(level,arg) /**/
+#define	debug(level,arg) do { /**/ } while (0)
 #endif /* DEBUG */
 
 typedef	unsigned char boolean;
